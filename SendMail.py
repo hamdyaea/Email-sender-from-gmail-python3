@@ -1,23 +1,19 @@
 # Developer : Hamdy Abou El Anein
 
 import smtplib
-TO = 'anywhere@mail.com'
-SUBJECT = 'Text subject of the mail'
-TEXT = 'Text of the mail'
 
-gmail_sender = 'yourMail@gmail.com'
-gmail_passwd = 'password'
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.ehlo()
+fromaddr = 'fromuser@gmail.com'
+toaddrs  = 'touser@gmail.com'
+msg = 'There was a terrible error that occured and I wanted you to know!'
+
+
+# Credentials (if needed)
+username = 'username'
+password = 'password'
+
+# The actual mail send
+server = smtplib.SMTP('smtp.gmail.com:587')
 server.starttls()
-server.login(gmail_sender, gmail_passwd)
-BODY = '\r\n'.join(['To: %s' % TO,
-                    'From: %s' % gmail_sender,
-                    'Subject: %s' % SUBJECT,
-                    '', TEXT])
-try:
-    server.sendmail(gmail_sender, [TO], BODY)
-    print ('email sent')
-except:
-    print ('error sending mail')
+server.login(username,password)
+server.sendmail(fromaddr, toaddrs, msg)
 server.quit()
