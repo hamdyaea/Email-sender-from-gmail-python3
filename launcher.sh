@@ -4,4 +4,4 @@
 
 sleep 4m
 
-python /Email-sender-from-gmail-python3/SendMail.py
+python3 /usr/share/daylight/Email-sender-from-gmail-python3/SendMail.py
